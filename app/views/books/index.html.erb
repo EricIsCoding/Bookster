@@ -1,5 +1,9 @@
-<h1>Bookster: All Books!</h1>
+<h2>All Books!</h2>
 
 <% @books.each do |book| %>
 <%= link_to book.name, book_path(book) %>
 <% end %>
+
+<p> --------------- </p>
+
+<%= link_to "Create Book", new_book_path %>
