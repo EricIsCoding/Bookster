@@ -1,1 +1,15 @@
-<p>Book Created</p>
+<h3><%= @book.name %></h3>
+
+<h4>Author:</h4>
+<h5><%= @book.author %></h5>
+
+<h4>Release Date:</h4>
+<h5><%= release_date @book %></h5>
+
+<h4>Page Count:</h4>
+<h5><%= @book.page_count %></h5>
+
+<h4>Synopsis:</h4>
+<h5><%= @book.synopsis %></h5>
+
+<%= link_to "Edit Book", edit_book_path(@book) %>
