@@ -19,20 +19,23 @@ class BooksController < ApplicationController
             @book.users << current_user
             redirect_to book_path(@book)
         else
-            render :new, flash[:alert]  = @book.errors.full_messages
+            flash.now[:alert]  = @book.errors.full_messages
+            render :new 
         end
     end
 
     def edit
-
+        @book = Book.find(params[:id])
     end
 
     def update
-
+        @book = Book.find(params[:id])
+        @book.update(book_params.reject{|k, v| v.blank? unless k == "synopsis"})
+        redirect_to book_path(@book)
     end
 
     def destroy
-
+        
     end
 
     private 
