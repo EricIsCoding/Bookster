@@ -1,8 +1,8 @@
 class Book < ApplicationRecord
-    has_many :bookgenres
-    has_many :genres, through: :bookgenres
-    has_many :bookusers
-    has_many :users, through: :bookusers
+    has_many :book_genres
+    has_many :genres, through: :book_genres
+    has_many :book_users
+    has_many :users, through: :book_users
     has_many :reviews
 
     validates :name, uniqueness: true, presence: true
