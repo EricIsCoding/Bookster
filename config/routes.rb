@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :reviews
-  resources :books
+  resources :books do 
+    resources :genres, only: [:new]
+  end
   resources :users do
     resources :books, only: [:index]
   end
