@@ -20,5 +20,10 @@
     <%= bf.text_area :synopsis %>
     <br />
 
+    <p>Please pick any appropriate Genres:</p>
+    <%= bf.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+    <br />
+    <br />
+
     <%= bf.submit %>
 <% end %>
