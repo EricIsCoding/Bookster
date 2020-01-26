@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 2020_01_26_063855) do
     t.string "name"
     t.integer "page_count"
     t.string "author"
-    t.string "release_date"
+    t.datetime "release_date"
+    t.string "synopsis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
