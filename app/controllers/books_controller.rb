@@ -12,6 +12,7 @@ class BooksController < ApplicationController
     def create
         @book = Book.create(book_params)
         if @book.persisted?
+            @book.users << current_user
             redirect_to book_path(@book)
         else
             render :new, flash[:alert]  = @book.errors.full_messages
@@ -32,7 +33,7 @@ class BooksController < ApplicationController
 
     private 
 
-    def books_params
+    def book_params
         params.require(:book).permit(:name, :author, :page_count, :release_date, :synopsis)
     end
 end
