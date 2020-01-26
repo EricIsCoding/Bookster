@@ -1,3 +1,24 @@
 <%= form_with model: book do |bf| %>
 
+    <%= bf.label :name %>
+    <%= bf.text_field :name %>
+    <br />
+
+    <%= bf.label :author %>
+    <%= bf.text_field :author %>
+    <br />
+
+    <%= bf.label :page_count %>
+    <%= bf.number_field :page_count %>
+    <br />
+
+    <%= bf.label :release_date %>
+    <%= bf.date_field :release_date, value: Date.today %>
+    <br />
+
+    <%= bf.label :synopsis %>
+    <%= bf.text_area :synopsis %>
+    <br />
+
+    <%= bf.submit %>
 <% end %>
