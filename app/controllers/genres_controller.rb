@@ -13,7 +13,12 @@ class GenresController < ApplicationController
 
     def create
         @genre = Genre.create(genre_params)
-
+        if @genre.persisted?
+            redirect_to genre_path(@genre)
+        else
+            flash.now[:alert]  = @genre.errors.full_messages
+            render :new 
+        end
     end
 
     def edit
@@ -21,7 +26,9 @@ class GenresController < ApplicationController
     end
 
     def update
-        current_genre
+        genre = current_genre
+        genre.update(helpers.update_params(genre_params))
+        redirect_to genre_path(@genre)
     end
 
     def destroy
