@@ -1,5 +1,5 @@
 <h1>Bookster: All Books!</h1>
 
-<% if @books.empty? %>
- <p> NO BOOKS YET </p>
+<% @books.each do |book| %>
+<%= link_to book.name, book_path(book) %>
 <% end %>
