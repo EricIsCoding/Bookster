@@ -10,7 +10,12 @@ class BooksController < ApplicationController
     end
 
     def create
-
+        @book = Book.create(book_params)
+        if @book.persisted?
+            redirect_to book_path(@book)
+        else
+            render :new, flash[:alert]  = @book.errors.full_messages
+        end
     end
 
     def edit
