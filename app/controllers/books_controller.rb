@@ -30,7 +30,7 @@ class BooksController < ApplicationController
 
     def update
         @book = Book.find(params[:id])
-        @book.update(book_params.reject{|k, v| v.blank? unless k == "synopsis"})
+        @book.update(helpers.update_params(book_params))
         redirect_to book_path(@book)
     end
 
