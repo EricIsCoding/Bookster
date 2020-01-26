@@ -9,5 +9,5 @@ class Book < ApplicationRecord
     validates :page_count, presence: true
     validates :author, presence: true
     validates :release_date, presence: true
-    validates :synopsis, length: { maximum: 250 }
+    validates :synopsis, length: { in: 10...250 }
 end
