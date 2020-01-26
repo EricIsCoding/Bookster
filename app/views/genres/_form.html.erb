@@ -8,5 +8,7 @@
     <%= gf.text_field :description %>
     <br />
 
+    <%= gf.hidden_field :book_ids, value: [ params[:book_id] ] unless !params[:book_id] %>
+
     <%= gf.submit %>
 <% end %>
