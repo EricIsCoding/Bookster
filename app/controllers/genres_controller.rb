@@ -14,6 +14,7 @@ class GenresController < ApplicationController
     end
 
     def create
+        byebug
         @genre = Genre.create(genre_params)
         if @genre.persisted?
             redirect_to genre_path(@genre)
@@ -45,6 +46,6 @@ class GenresController < ApplicationController
     end
 
     def genre_params
-        params.require(:genre).permit(:name, :description)
+        params.require(:genre).permit(:name, :description, :book_ids)
     end
 end
