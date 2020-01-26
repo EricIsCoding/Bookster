@@ -1,7 +1,7 @@
 <h2>All Books!</h2>
 
 <% @books.each do |book| %>
-<%= link_to book.name, book_path(book) %>
+<%= link_to book.name, book_path(book) %> - <%= book.author %>
 <% end %>
 
 <p> --------------- </p>
