@@ -1,0 +1,12 @@
+<%= form_with model: genre do |gf|%>
+    
+    <%= gf.label :name %>
+    <%= gf.text_field :name %>
+    <br />
+
+    <%= gf.label :description %>
+    <%= gf.text_field :description %>
+    <br />
+
+    <%= gf.submit %>
+<% end %>
