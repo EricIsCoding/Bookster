@@ -2,8 +2,10 @@
 
 <% @books.each do |book| %>
 <%= link_to book.name, book_path(book) %> - <%= book.author %>
+<br />
+<p> ----------------------- </p>
 <% end %>
 
-<p> --------------- </p>
+<p> ----------------------- </p>
 
 <%= link_to "Create Book", new_book_path %>
