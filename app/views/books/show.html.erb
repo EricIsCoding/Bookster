@@ -26,3 +26,7 @@
         <%= render partial: "reviews/review", locals: {review: rev} %>
     <% end%>
 <% end%>
+
+<h6>Add Review: </h6>
+<%= render partial: "reviews/form", locals: {review: Review.new } %>
+<p> ---------------------------- </p>
