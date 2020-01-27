@@ -16,7 +16,7 @@
     <p>No Genres... Yet. <%= link_to "Add Genre", new_book_genre_path(@book) %></p>
 <% end %>
 
-<%= link_to "Edit Book", edit_book_path(@book) %> <%= link_to "Delete Book", book_path(@book), {method: "delete"} %>
+<%= link_to 'Edit Book', edit_book_path(@book) if creator? @book %> <%= link_to 'Delete Book', book_path(@book), {method: 'delete'} if creator? @book %>
 
 <h4> Reviews </h4>
 <% if @book.reviews.empty? %>
@@ -25,8 +25,8 @@
     <% @book.reviews.each do |rev| %>
         <%= render partial: "reviews/review", locals: {review: rev} %>
     <% end%>
+<p> ---------------------------- </p>
 <% end%>
 
 <h6>Add Review: </h6>
 <%= render partial: "reviews/form", locals: {review: Review.new } %>
-<p> ---------------------------- </p>
