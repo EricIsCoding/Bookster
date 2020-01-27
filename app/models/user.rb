@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    has_many :books, dependent: :destroy
+    has_many :created_books, class_name: "Book", dependent: :destroy
     has_many :reviews, dependent: :destroy
-    has_many :books, through: :reviews
+    has_many :reviewed_books, through: :reviews, source: "book"
 end
