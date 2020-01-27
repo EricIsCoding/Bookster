@@ -14,6 +14,10 @@ class ReviewsController < ApplicationController
 
     def edit
         @review = Review.find(params[:id])
+        if !helpers.record_owner?(@review)
+            flash[:alert] = "Cannot Access This Review's Edit Page."
+            redirect_to books_path
+        end
     end
 
     def update
