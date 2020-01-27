@@ -1,3 +1,4 @@
+
 <h3><%= @book.name %></h3>
 
 <p>Author: <%= @book.author %> | Release Date: <%= release_date @book %> | Page Count: <%= @book.page_count %></p>
@@ -13,14 +14,14 @@
     <% end %>
     </ul>
 <% else %>
-    <p>No Genres... Yet. <%= link_to "Add Genre", new_book_genre_path(@book) %></p>
+    <p>No Genres... Yet.</p>
 <% end %>
 
 <%= link_to 'Edit Book', edit_book_path(@book) if creator? @book %> <%= link_to 'Delete Book', book_path(@book), {method: 'delete'} if creator? @book %>
 
 <h4> Reviews </h4>
 <% if @book.reviews.empty? %>
-    <p> No Reviews For This Book. </p>
+    <p> No Reviews For This Book.</p>
 <% else %>
     <% @book.reviews.each do |rev| %>
         <%= render partial: "reviews/review", locals: {review: rev} %>
