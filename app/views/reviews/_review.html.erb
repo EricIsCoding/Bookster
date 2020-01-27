@@ -1,0 +1,9 @@
+<p> ---------------------------- </p>
+
+<p> Score: <%= review.score %> </p>
+
+<p> Review: <%= review.content %> </p>
+
+<p> Author: <%= review.user.username %>
+
+<%= link_to "Edit Review", edit_book_review_path(review.book, review) unless review.user != current_user %> <%= link_to "Delete Review", review_path, {method: 'delete'} unless review.user != current_user %>
