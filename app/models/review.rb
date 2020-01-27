@@ -5,7 +5,7 @@ class Review < ApplicationRecord
   validates :score, numericality: {greater_than: 0, less_than_or_equal_to: 10}
   validates :content, length: { in: 20...250 }
 
-  scope :written_by_user, ->(user) { where("user = ?", user) }
+  scope :written_by_user, ->(user) { where("user_id = ?", user.id) }
   scope :in_descending_order, -> { order("score DESC") }
 
 end

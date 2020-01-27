@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :books, only: [:index]
-    resources :reviews, only: [:show]
+    resources :reviews, only: [:index]
   end
   resources :genres
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

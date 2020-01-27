@@ -1,6 +1,12 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
 
+    def index
+        if params[:user_id]
+            @reviews = Review.all.written_by_user(current_user).in_descending_order
+        end
+    end
+
     def new
         @review = Review.new
     end

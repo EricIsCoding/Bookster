@@ -1,0 +1,5 @@
+<h3>Reviews Ordered by Score: </h3>
+
+<% @reviews.each do |rev| %>
+    <%= render partial: "reviews/review", locals: {review: rev} %>
+<% end %>
