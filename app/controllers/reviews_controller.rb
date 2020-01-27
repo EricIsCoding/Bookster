@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :authenticate_user!
 
     def new
         @review = Review.new
@@ -16,11 +17,15 @@ class ReviewsController < ApplicationController
     end
 
     def update
-
+        review = Review.find(params[:id])
+        review.update(helpers.update_params(review_params))
+        redirect_to book_path(review.book)
     end
 
     def destroy
-
+        review = Review.find(params[:id])
+        review.destroy
+        redirect_to book_path(review.book)
     end
 
     private
