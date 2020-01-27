@@ -29,8 +29,7 @@ class BooksController < ApplicationController
     end
 
     def update
-        book = Book.find(params[:id])
-        book.update(helpers.update_params(book_params))
+        Book.find(params[:id]).update(helpers.update_params(book_params))
         redirect_to book_path(book)
     end
 
