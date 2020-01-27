@@ -1,0 +1,16 @@
+<h2>Hello <%= @user.name %>!</h2>
+
+<h4>Created Books: (only last 10 listed) </h4>
+
+<% @user.created_books.limit(10).each do |book| %>
+    <%= link_to book.name, book_path(book) %>
+    <br />
+<% end %>
+
+<h4>Reviewed Books:</h4>
+<% @user.reviewed_books.limit(10).each do |book| %>
+    <%= link_to book.name, book_path(book) %>
+    <br />
+<% end %>
+
+<%= link_to "All Of Your Reviews", user_reviews_path(@user) %>
