@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_26_195044) do
+ActiveRecord::Schema.define(version: 2020_01_27_064034) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "book_id", null: false
@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 2020_01_26_195044) do
     t.index ["genre_id"], name: "index_book_genres_on_genre_id"
   end
 
-  create_table "book_users", force: :cascade do |t|
-    t.boolean "read"
-    t.integer "book_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_book_users_on_book_id"
-    t.index ["user_id"], name: "index_book_users_on_user_id"
-  end
-
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.integer "page_count"
@@ -39,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_01_26_195044) do
     t.string "synopsis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -75,8 +67,7 @@ ActiveRecord::Schema.define(version: 2020_01_26_195044) do
 
   add_foreign_key "book_genres", "books"
   add_foreign_key "book_genres", "genres"
-  add_foreign_key "book_users", "books"
-  add_foreign_key "book_users", "users"
+  add_foreign_key "books", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end

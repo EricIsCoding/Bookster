@@ -1,9 +1,9 @@
 class Book < ApplicationRecord
     has_many :book_genres, dependent: :destroy
     has_many :genres, through: :book_genres
-    has_many :book_users, dependent: :destroy
-    has_many :users, through: :book_users
     has_many :reviews, dependent: :destroy
+    has_many :users, through: :reviews
+    belongs_to :creator, class_name: "User", foreign_key: 'user_id'
 
     validates :name, uniqueness: true, presence: true
     validates :page_count, presence: true
