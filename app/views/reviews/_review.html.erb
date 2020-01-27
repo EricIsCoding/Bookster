@@ -1,4 +1,7 @@
 <p> ---------------------------- </p>
+<% if params[:user_id] %>
+    <h4><%= review.book.name %></h4>
+<% end%>
 
 <p> Score: <%= review.score %> </p>
 
