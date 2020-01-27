@@ -7,45 +7,54 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(
-    name: "Eric J",
-    username: "Eric J",
-    email: "eric@eric.com",
-    password: "Fake1234",
-    password_confirmation: "Fake1234"
-)
+# User.create(
+#     name: "Eric J",
+#     username: "Eric J",
+#     email: "eric@eric.com",
+#     password: "Fake1234",
+#     password_confirmation: "Fake1234"
+# )
 
 
-24.times.with_index do |index|
-    fake_name = Faker::Name.unique.name
-    User.create(
-        name: fake_name,
-        username: Faker::Internet.username(specifier: fake_name),
-        email: Faker::Internet.safe_email(name: fake_name),
-        password: "FakePass#{index + 1}",
-        password_confirmation: "FakePass#{index + 1}"
-    )
-end
+# 24.times.with_index do |index|
+#     fake_name = Faker::Name.unique.name
+#     User.create(
+#         name: fake_name,
+#         username: Faker::Internet.username(specifier: fake_name),
+#         email: Faker::Internet.safe_email(name: fake_name),
+#         password: "FakePass#{index + 1}",
+#         password_confirmation: "FakePass#{index + 1}"
+#     )
+# end
 
-100.times.with_index do |index|
-    if index < 10
-        user = rand(1...25)
-    else
-        user = 1
-    end
-     Book.create(
-        name: Faker::Book.title,
-        author: Faker::Book.author,
-        page_count: rand(180...650),
-        release_date: Faker::Date.in_date_period,
-        synopsis: Faker::Lorem.characters(number: 30...200),
-        user_id: user
-     )
-end
+# 100.times.with_index do |index|
+#     if index < 10
+#         user = rand(1...25)
+#     else
+#         user = 1
+#     end
+#      Book.create(
+#         name: Faker::Book.title,
+#         author: Faker::Book.author,
+#         page_count: rand(180...650),
+#         release_date: Faker::Date.in_date_period,
+#         synopsis: Faker::Lorem.characters(number: 30...200),
+#         user_id: user
+#      )
+# end
 
-12.times do 
-    Genre.create(
-        name: Faker::Book.unique.genre,
-        description: Faker::Lorem.sentences(number: 1)
+# 12.times do 
+#     Genre.create(
+#         name: Faker::Book.unique.genre,
+#         description: Faker::Lorem.sentences(number: 1)
+#     )
+# end
+
+50.times do 
+    Review.create(
+        score: rand(1...10),
+        content: Faker::Lorem.paragraph,
+        user_id: rand(1...25),
+        book_id: rand(1...100)
     )
 end
