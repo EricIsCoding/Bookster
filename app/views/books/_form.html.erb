@@ -1,4 +1,4 @@
-<%= form_with model: book do |bf| %>
+<%= form_with model: book, local: true do |bf| %>
 
     <%= bf.label :name %>
     <%= bf.text_field :name %>

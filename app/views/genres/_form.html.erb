@@ -1,4 +1,4 @@
-<%= form_with model: genre do |gf|%>
+<%= form_with model: genre, local: true do |gf|%>
     
     <%= gf.label :name %>
     <%= gf.text_field :name %>
