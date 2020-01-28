@@ -7,9 +7,9 @@
 <p><%= @book.synopsis %></p>
 
 <p>Genres:</p>
-<% if !@book.genres.empty? %>
+<% if @genres.empty? %>
     <ul>
-    <% @book.genres.each do |genre| %>
+    <% @genres.each do |genre| %>
         <li><%= genre.name %></li>
     <% end %>
     </ul>
@@ -20,14 +20,14 @@
 <%= link_to 'Edit Book', edit_book_path(@book) if creator? @book %> <%= link_to 'Delete Book', book_path(@book), {method: 'delete'} if creator? @book %>
 
 <h4> Reviews </h4>
-<% if @book.reviews.empty? %>
+<% if @reviews.empty? %>
     <p> No Reviews For This Book.</p>
 <% else %>
-    <% @book.reviews.each do |rev| %>
+    <% @reviews.each do |rev| %>
         <%= render partial: "reviews/review", locals: {review: rev} %>
     <% end%>
 <p> ---------------------------- </p>
 <% end%>
 
 <h6>Add Review: </h6>
-<%= render partial: "reviews/form", locals: {review: Review.new } %>
+<%= render partial: "reviews/form", locals: {review: @review } %>

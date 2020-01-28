@@ -4,6 +4,8 @@ class ReviewsController < ApplicationController
     def index
         if params[:user_id]
             @reviews = Review.all.written_by_user(current_user).in_descending_order
+        else 
+            @reviews = Review.all.in_descending_order
         end
     end
 
@@ -13,8 +15,15 @@ class ReviewsController < ApplicationController
 
     def create
         @review = Review.create(review_params)
+        @book = Book.find(@review.book_id)
         if @review.persisted?
             redirect_to book_path(@review.book)
+        else 
+            flash.now[:alert] = @review.errors.full_messages
+            @genres = @book.genres
+            @reviews = @book.reviews
+            @review = @review
+            render "books/show", id: @book.id, book_id: @book.id
         end
     end
 

@@ -1,4 +1,4 @@
-<%= form_with model: review do |rf| %>
+<%= form_with model: review, local: true do |rf| %>
 
     <%= rf.label "Score (between 1 and 10):" %>
     <%= rf.number_field :score %>
@@ -7,8 +7,8 @@
     <%= rf.label "Review (between 20 and 200 characters):" %>
     <%= rf.text_area :content %>
     <br />
-
-    <%= rf.hidden_field :book_id, value: params[:book_id] || params[:id] %>
+    
+    <%= rf.hidden_field :book_id, value: params[:id] || params[:review][:book_id]%>
     <%= rf.hidden_field :user_id, value: current_user.id %>
 
     <%= rf.submit %>
