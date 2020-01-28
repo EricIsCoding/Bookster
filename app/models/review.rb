@@ -7,5 +7,7 @@ class Review < ApplicationRecord
 
   scope :written_by_user, ->(user) { where("user_id = ?", user.id) }
   scope :in_descending_order, -> { order("score DESC") }
-
+  scope :in_ascending_order, -> { order("score DESC")}
+  scope :greater_than, ->(num) { where("score > ?", num) }
+  scope :less_than, ->(num) { where("score < ?", num)}
 end
