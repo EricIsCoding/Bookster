@@ -17,9 +17,8 @@ class ReviewsController < ApplicationController
         @review = Review.create(review_params)
         @book = Book.find(@review.book_id)
         if @review.persisted?
-            redirect_to book_path(@review.book)
+            redirect_to book_path(@review.book), flash[:notice] = "Review created sucessfully."
         else 
-            flash.now[:alert] = @review.errors.full_messages
             @genres = @book.genres
             @reviews = @book.reviews
             @review = @review

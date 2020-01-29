@@ -17,9 +17,9 @@ class GenresController < ApplicationController
         byebug
         @genre = Genre.create(genre_params)
         if @genre.persisted?
+            notice = "Genre created sucessfully."
             redirect_to genre_path(@genre)
         else
-            flash.now[:alert]  = @genre.errors.full_messages
             render :new 
         end
     end

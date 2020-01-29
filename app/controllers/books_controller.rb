@@ -19,10 +19,9 @@ class BooksController < ApplicationController
     def create
         @book = Book.create(book_params)
         if @book.persisted?
-            @book.users << current_user
+            flash[:notice] = "Book created sucessfully."
             redirect_to book_path(@book)
         else
-            flash.now[:alert]  = @book.errors.full_messages
             render :new 
         end
     end
@@ -38,13 +37,15 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        Book.find(params[:id]).destroy
+        book = Book.find(params[:id])
+        book.destroy
+        flash[:notice] = "#{book.name} was deleted."
         redirect_to books_path
     end
 
     private 
 
     def book_params
-        params.require(:book).permit(:name, :author, :page_count, :release_date, :synopsis, genre_ids: [])
+        params.require(:book).permit(:name, :author, :page_count, :release_date, :synopsis, :user_id, genre_ids: [])
     end
 end
