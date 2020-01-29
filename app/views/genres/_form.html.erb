@@ -1,5 +1,6 @@
 <%= form_with model: genre, local: true do |gf|%>
-    
+    <%= render "devise/shared/error_messages", resource: genre %>
+
     <%= gf.label :name %>
     <%= gf.text_field :name %>
     <br />

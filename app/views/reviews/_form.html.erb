@@ -1,4 +1,5 @@
 <%= form_with model: review, local: true do |rf| %>
+    <%= render "devise/shared/error_messages", resource: review %>
 
     <%= rf.label "Score (between 1 and 10):" %>
     <%= rf.number_field :score %>

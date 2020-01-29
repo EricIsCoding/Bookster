@@ -1,4 +1,6 @@
 <%= form_with model: book, local: true do |bf| %>
+    <%= render "devise/shared/error_messages", resource: book %>
+    <%= bf.hidden_field :user_id, value: current_user.id %>
 
     <%= bf.label :name %>
     <%= bf.text_field :name %>
