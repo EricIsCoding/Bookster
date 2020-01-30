@@ -5,11 +5,13 @@
 <% @user.created_books.limit(10).each do |book| %>
     <%= link_to book.name, book_path(book) %>
     <br />
+    <br />
 <% end %>
 
 <h4>Reviewed Books:</h4>
 <% @user.reviewed_books.limit(10).each do |book| %>
     <%= link_to book.name, book_path(book) %>
+    <br />
     <br />
 <% end %>
 
