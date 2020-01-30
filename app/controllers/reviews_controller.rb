@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        @review = Review.find(params[:id])
+        @review = current_review
         if !helpers.record_owner?(@review)
             flash[:alert] = "Cannot Access This Review's Edit Page."
             redirect_to books_path
@@ -35,18 +35,22 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        review = Review.find(params[:id])
+        review = current_review
         review.update(helpers.update_params(review_params))
         redirect_to book_path(review.book)
     end
 
     def destroy
-        review = Review.find(params[:id])
+        review = current_review
         review.destroy
         redirect_to book_path(review.book)
     end
 
     private
+
+    def current_review
+        Review.find(params[:id])
+    end
 
     def review_params
         params.require(:review).permit(:score, :content, :book_id, :user_id)

@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     end
 
     def show 
-        @book = Book.find(params[:id])
+        @book = current_book
         @genres = @book.genres
         @reviews = @book.reviews
         @review = Review.new
@@ -27,23 +27,27 @@ class BooksController < ApplicationController
     end
 
     def edit
-        @book = Book.find(params[:id])
+        @book = current_book
     end
 
     def update
-        book = Book.find(params[:id])
+        book = current_book
         book.update(helpers.update_params(book_params))
         redirect_to book_path(book)
     end
 
     def destroy
-        book = Book.find(params[:id])
+        book = current_book
         book.destroy
         flash[:notice] = "#{book.name} was deleted."
         redirect_to books_path
     end
 
     private 
+
+    def current_book
+        Book.find(params[:id])
+    end
 
     def book_params
         params.require(:book).permit(:name, :author, :page_count, :release_date, :synopsis, :user_id, genre_ids: [])
