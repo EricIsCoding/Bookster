@@ -58,6 +58,7 @@ a:hover {
     color: #1abc9c;
 }
 
+/* Move login or log out to end of navbar */
 .topnav a:last-child {
     float: right;
     border: none;
@@ -79,6 +80,7 @@ a:hover {
     position: relative;
 }
 
+/* Styling for Alert and notice */
 .alert, .notice {
     padding: 5px;
     margin: 5px;
@@ -86,10 +88,12 @@ a:hover {
     padding-bottom: 0px;
 }
 
+/* Add color to errors */
 .error_message {
     color: #c0392b;
 }
 
+/* Add color to notices (sucess) */
 .notice {
     color: #27ae60;
 }
