@@ -14,10 +14,9 @@ class GenresController < ApplicationController
     end
 
     def create
-        byebug
         @genre = Genre.create(genre_params)
         if @genre.persisted?
-            :notice = "Genre created sucessfully."
+            notice = "Genre created sucessfully."
             redirect_to genre_path(@genre)
         else
             render :new 
