@@ -1,6 +1,6 @@
 <p> ---------------------------- </p>
-<% if params[:user_id] %>
-    <h4><%= review.book.name %></h4>
+<% if params[:user_id] || !params[:id] %>
+    <h4><%= link_to review.book.name, book_path(review.book) %></h4>
 <% end%>
 
 <p> Score: <%= review.score %> </p>

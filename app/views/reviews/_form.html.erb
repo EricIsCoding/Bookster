@@ -9,7 +9,7 @@
     <%= rf.text_area :content %>
     <br />
     
-    <%= rf.hidden_field :book_id, value: params[:id] || params[:review][:book_id]%>
+    <%= rf.hidden_field :book_id, value: params[:id] %>
     <%= rf.hidden_field :user_id, value: current_user.id %>
 
     <%= rf.submit %>
