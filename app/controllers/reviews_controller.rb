@@ -17,7 +17,8 @@ class ReviewsController < ApplicationController
         @review = Review.create(review_params)
         @book = Book.find(@review.book_id)
         if @review.persisted?
-            redirect_to book_path(@review.book), flash[:notice] = "Review created sucessfully."
+            flash[:notice] = "Review created sucessfully."
+            redirect_to book_path(@review.book)
         else 
             @genres = @book.genres
             @reviews = @book.reviews
@@ -36,6 +37,7 @@ class ReviewsController < ApplicationController
 
     def update
         review = current_review
+        params[:review][:book_id] = current_review.book_id
         review.update(helpers.update_params(review_params))
         redirect_to book_path(review.book)
     end
