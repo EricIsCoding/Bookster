@@ -1,24 +1,15 @@
-# README
+# Bookster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A barebones CRUD app for rating and sharing books.
 
-Things you may want to cover:
+## The Story
 
-* Ruby version
+This app was built for my Rails project with Flatiron School. It actually started as a bit of a joke with my wife, but turned into a project idea. I used ERB templates and minimal CSS styling to create a barebones book rating and sharing app. 
 
-* System dependencies
+## The Tech
 
-* Configuration
+* Built entirely with Ruby on Rails using an MVC structure 
+* Handled user Authentication using the Devise Gem and Facebook OAuth
+* Styled using plain CSS and templated using ERB
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## [Video Demo](https://www.youtube.com/watch?v=T8Bys0BqP8c&ab_channel=JustPlainCoding)
